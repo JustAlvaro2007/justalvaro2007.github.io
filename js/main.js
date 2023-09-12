@@ -652,4 +652,28 @@ $(function() {
 
   })
 
+  function getFullYear(){
+    var year = new Date().getFullYear();
+
+    $('#author').text(`© ${year} Justus Thadewald`);
+  }
+
+  function calculateAge() {
+    var birthdate = new Date("2007.05.17");
+    var today = new Date();
+    var age = today.getFullYear() - birthdate.getFullYear();
+
+    // Überprüfen, ob der Geburtstag bereits stattgefunden hat
+    if (today.getMonth() < birthdate.getMonth() || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())) {
+        age--;
+    }
+
+    // Aktualisieren Sie das Alter auf der Website
+    $('#age').text(age);
+  }
+  
+  // Rufen Sie die Funktion auch beim Laden der Seite auf
+  calculateAge();
+  getFullYear();
+
 });
